@@ -18,7 +18,8 @@ struct VideoListView: View {
                     VideoCell(video: video)
                 })
 
-            }.navigationTitle("Joshua's videos")
+            }
+            .navigationTitle("Joshua's videos")
         }
         
     }
@@ -51,8 +52,10 @@ struct VideoCell: View {
 }
 
 struct VideoListView_Previews: PreviewProvider {
+    
     static var previews: some View {
         VideoListView()
-            .preferredColorScheme(.light)
+            .preferredColorScheme(.dark)
     }
+    
 }

@@ -12,6 +12,7 @@ struct VideoDetailView: View {
     var video: Video
     var body: some View {
         VStack(spacing: 10) {
+            
             Image(video.imageName)
                 .resizable()
                 .scaledToFit()
@@ -36,21 +37,22 @@ struct VideoDetailView: View {
                     .foregroundColor(.secondary)
             }.padding()
             
-            Text(video.description)
-                .font(.body)
-                .padding()
+            VStack(spacing: 50) {
+                Text(video.description)
+                    .font(.body)
+                    .padding()
+                
+                Link(destination: video.url, label: {
+                    Text("Watch now")
+                        .bold()
+                        .font(.title2)
+                        .frame(width: 280, height: 50)
+                        .background(Color(.systemRed))
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                })
+            }
             
-            Spacer()
-            
-            Link(destination: video.url, label: {
-                Text("Watch now")
-                    .bold()
-                    .font(.title2)
-                    .frame(width: 280, height: 50)
-                    .background(Color(.systemRed))
-                    .foregroundColor(.white)
-                    .cornerRadius(10)
-            })
         }
     }
 }
@@ -58,7 +60,6 @@ struct VideoDetailView: View {
 struct VideoDetailView_Previews: PreviewProvider {
     static var previews: some View {
         VideoDetailView(video: VideoList.topTen.first!)
-            .preferredColorScheme(.light)
-      
+            .preferredColorScheme(.dark)
     }
 }
